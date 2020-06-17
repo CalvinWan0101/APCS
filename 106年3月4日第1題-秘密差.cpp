@@ -1,9 +1,8 @@
-/*#include <iostream>
+#include <iostream>
 #include <string>
 using namespace std;
 int main()
 {
-	//6╓юда
 	int a, b;
 	string c;
 	int array[1001];
@@ -24,4 +23,4 @@ int main()
 		else
 			cout << b - a << endl;
 	}
-}*/
+}
