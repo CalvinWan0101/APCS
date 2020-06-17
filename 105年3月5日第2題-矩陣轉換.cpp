@@ -1,8 +1,8 @@
-/*#include <iostream>
+#include <iostream>
 #include <iomanip>
 using namespace std;
 int buffer[10][10] = { 2 };
-//Â½Âà¨ç¼Æ
+//ç¿»è½‰å‡½æ•¸
 void turndown(int array[10][10], int y, int x)
 {
 	int now;
@@ -14,10 +14,10 @@ void turndown(int array[10][10], int y, int x)
 			array[y - 1 - j][i] = now;
 		}
 }
-//±ÛÂà¨ç¼Æ(°f®É°w)
+//æ—‹è½‰å‡½æ•¸(é€†æ™‚é‡)
 void turnleft(int array[10][10], int y, int x)
 {
-	//x,y¤¬´«¡A¦A¤W¤UÄA­Ë
+	//x,yäº’æ›ï¼Œå†ä¸Šä¸‹é¡›å€’
 	for (int i = 0; i < y; i++)
 		for (int j = 0; j < x; j++)
 			buffer[j][i] = array[i][j];
@@ -29,49 +29,47 @@ void turnleft(int array[10][10], int y, int x)
 int main(int argc, char** argv)
 {
 	int y, x, m;
-	cin >> y;
-	cin >> x;
-	cin >> m;
-	int command[10] = { 2 };
-	int orgin[10][10];
-	//¿é¤JB°}¦C
-	for (int i = 0; i < y; i++)
-		for (int j = 0; j < x; j++)
-			cin >> orgin[i][j];
-	//¿é¤J©R¥O°}¦C
-	for (int i = 0; i < m; i++)
-		cin >> command[i];
-	//­Ë¹L¨ÓÅª¨ú©R¥O¦CXDD
-	int b;
-	for (int i = m - 1; i >= 0; i--)
-	{
-		switch (command[i])
+	while (cin >> y >> x >> m) {
+		int command[10] = { 2 };
+		int orgin[10][10];
+		//è¼¸å…¥Bé™£åˆ—
+		for (int i = 0; i < y; i++)
+			for (int j = 0; j < x; j++)
+				cin >> orgin[i][j];
+		//è¼¸å…¥å‘½ä»¤é™£åˆ—
+		for (int i = 0; i < m; i++)
+			cin >> command[i];
+		//å€’éä¾†è®€å–å‘½ä»¤åˆ—XDD
+		int b;
+		for (int i = m - 1; i >= 0; i--)
 		{
-		case 0:
-			turnleft(orgin, y, x);
-			b = y;
-			y = x;
-			x = b;
-			break;
-		case 1:
-			turndown(orgin, y, x);
-			break;
-		default:
-			break;
+			switch (command[i])
+			{
+			case 0:
+				turnleft(orgin, y, x);
+				b = y;
+				y = x;
+				x = b;
+				break;
+			case 1:
+				turndown(orgin, y, x);
+				break;
+			default:
+				break;
+			}
+		}
+		cout << y << " " << x << endl;
+		for (int i = 0; i < y; i++)
+		{
+			for (int j = 0; j < x; j++)
+			{
+				if (j != x - 1)
+					cout << orgin[i][j] << " ";
+				else
+					cout << orgin[i][j];
+			}
+			cout << endl;
 		}
 	}
-	cout << y << " " << x << endl;
-	for (int i = 0; i < y; i++)
-	{
-		for (int j = 0; j < x; j++)
-		{
-			if (j != x - 1)
-				cout << orgin[i][j] << " ";
-			else
-				cout << orgin[i][j];
-		}
-		cout << endl;
-	}
-	system("PAUSE");
 	return 0;
-}*/
+}
